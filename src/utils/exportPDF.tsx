@@ -1,12 +1,19 @@
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
+import ReactPDF from "@react-pdf/renderer";
 
-export const exportToPDF = (ref: any) => {
-  const content = ref.current;
-  html2canvas(content).then((canvas) => {
-    const imgData = canvas.toDataURL("/image/png");
-    const pdf = new jsPDF("p", "mm", "a4");
-    pdf.addImage(imgData, "PNG", 0, 0, 210, 297);
-    pdf.save("download.pdf");
-  });
-};
+// export const exportToPDF = () => {
+//   const domElement: HTMLElement = document.getElementById("resume-template") as HTMLElement;
+//   html2canvas(domElement, { scale: 2 }).then((canvas: HTMLCanvasElement) => {
+//     const doc: jsPDF = new jsPDF({
+//       format: "a4",
+//       unit: "px",
+//     });
+//     const domHTML: HTMLElement = document.getElementById("resume-template") as HTMLElement;
+//     doc.html(domHTML, {
+//       async callback(domHTML) {
+//         await domHTML.save("resume");
+//       },
+//     });
+//   });
+// };

@@ -27,7 +27,7 @@ export const ExperienceEditor = (props: ExperienceEditorProps) => {
   const handler = new EditHandler(experience, update);
 
   return (
-    <div className="relative p-4 w-full border-white-solid grid grid-rows-auto gap-8 rounded-[15px]">
+    <div className="relative p-4 max-w-full bg-white/25 shadow-md  grid grid-rows-auto gap-8 rounded-[15px]">
       <div className="mt-4 w-full grid grid-cols-2 gap-8">
         <Input id="position" placeholder="Position" value={experience.position ?? ""} onChange={(e: any) => handler.handleInputChanges(e)} />
         <Input id="company" placeholder="Company" value={experience.company ?? ""} onChange={(e: any) => handler.handleInputChanges(e)} />

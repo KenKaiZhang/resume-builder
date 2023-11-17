@@ -22,6 +22,13 @@ export const UserInfo = (props: UserInfoProps) => {
     }
   }, [info.links]);
 
+  useEffect(() => {
+    const textArea: HTMLElement = document.getElementById("objective-area") as HTMLElement;
+    if (textArea) {
+      textAreaAdjust({ target: textArea });
+    }
+  }, []);
+
   const handleChange = (e: any) => {
     const key: string = e.target.id.split("-")[0];
     const value: string = e.target.value;
@@ -87,9 +94,11 @@ export const UserInfo = (props: UserInfoProps) => {
           name="objective"
           placeholder="Career Objective"
           value={info.objective}
-          className="p-4 w-full resize-none border-white-solid rounded-[15px]"
-          onChange={handleChange}
-          onKeyUp={textAreaAdjust}
+          className="p-4 w-full resize-none border-white-solid rounded-[15px] placeholder:text-white"
+          onChange={(e: any) => {
+            handleChange(e);
+            textAreaAdjust(e);
+          }}
         ></textarea>
       </div>
     </div>

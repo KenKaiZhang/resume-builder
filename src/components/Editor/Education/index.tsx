@@ -28,7 +28,7 @@ export const EducationEditor = (props: EducationEditorProps) => {
   const handler = new EditHandler(education, update);
 
   return (
-    <div className="relative p-4 w-full border-white-solid grid grid-rows-auto gap-8 rounded-[15px]">
+    <div className="relative p-4 w-full bg-white/25 shadow-md grid grid-rows-auto gap-8 rounded-[15px]">
       <div className="mt-4 w-full">
         <Input id="school" placeholder="School" value={education.school ?? ""} onChange={(e: any) => handler.handleInputChanges(e)} />
       </div>

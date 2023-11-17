@@ -14,9 +14,12 @@ export const ListItem = (props: ListItemProps) => {
   const buttonIcon: JSX.Element = <FontAwesomeIcon icon={faCircleXmark} className="h-full pointer-events-none" />;
 
   return (
-    <div id={id} className="relative py-4 px-2 h-[45px] flex items-center border-white-solid rounded-[15px] gap-4 cursor-pointer hover:bg-white/20">
+    <div
+      id={id}
+      className="relative py-2 px-2 h-[45px] grid grid-cols-item items-center rounded-[15px] gap-4 cursor-pointer bg-white/25 shadow-md hover:bg-blue-300/50"
+    >
       <FontAwesomeIcon icon={faGripLinesVertical} />
-      <button className="relative whitespace-nowrap text-clip text-[1rem]" onClick={onItemClick}>
+      <button className="relative whitespace-nowrap text-ellipses text-[1rem] truncate text-left" onClick={onItemClick}>
         {name}
       </button>
       <CircleButton inner={buttonIcon} dim={20} onClick={onButtonClick} />

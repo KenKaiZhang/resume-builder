@@ -17,7 +17,12 @@ export const DraggableList = (props: DraggableListProps) => {
     <DragDropContext onDragEnd={onDragEnd}>
       <Droppable droppableId={`${name}-drop-root`} direction={horizontal ? "horizontal" : "vertical"}>
         {(provided) => (
-          <div {...provided.droppableProps} ref={provided.innerRef} className="w-full flex gap-4 flex-wrap">
+          <div
+            {...provided.droppableProps}
+            ref={provided.innerRef}
+            className="w-full grid gap-4 max-w-full"
+            style={horizontal ? { display: "flex", flexWrap: "wrap" } : {}}
+          >
             {list.map((item, i) => {
               const { id = "", summary = "" } = item;
               return (

@@ -38,7 +38,7 @@ export const ProjectEditor = (props: ProjectEditorProps) => {
   const handler = new EditHandler(project, update);
 
   return (
-    <div className="relative p-4 w-full border-white-solid grid grid-rows-auto gap-8 rounded-[15px]">
+    <div className="relative p-4 w-full bg-white/25 shadow-md grid grid-rows-auto gap-8 rounded-[15px]">
       <div className="mt-4 w-full">
         <Input id="name" placeholder="Name" value={project.name ?? ""} onChange={(e: any) => handler.handleInputChanges(e)} />
       </div>

@@ -42,9 +42,16 @@ type Project = {
   details?: string[];
 };
 
+type Skill = {
+  tools?: string[];
+  concepts?: string[];
+  services?: string[];
+};
+
 type Resume = {
   user: User;
-  education: Education[];
-  experience: Experience[];
-  project: Project[];
+  educations: Education[];
+  experiences: Experience[];
+  projects: Project[];
+  skills?: Skill;
 };

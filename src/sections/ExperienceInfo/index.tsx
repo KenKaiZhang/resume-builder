@@ -29,8 +29,8 @@ export const ExperienceInfo = (props: ExperienceInfoProps) => {
 
   return (
     <div className="mt-8">
-      <p className="font-bold">Work Experience</p>
-      <div className="mt-4 w-full">
+      <p className="font-bold text-[1.5rem]">Work Experience</p>
+      <div className="mt-2 w-full">
         <DraggableList
           name="edu"
           list={experienceList ?? []}

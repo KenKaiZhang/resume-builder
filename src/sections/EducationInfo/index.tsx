@@ -32,8 +32,8 @@ export const EducationInfo = (props: EducationInfoProps) => {
 
   return (
     <div className="mt-8">
-      <p className="font-bold">Education</p>
-      <div className="mt-4 w-full">
+      <p className="font-bold text-[1.5rem]">Education</p>
+      <div className="mt-2 w-full">
         <DraggableList
           name="edu"
           list={educationList ?? []}
