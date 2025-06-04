@@ -1,13 +1,13 @@
 import type { ProjectData } from "@/types";
 import { Button } from "../ui/button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faProjectDiagram, faUser, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faProjectDiagram, faXmark } from "@fortawesome/free-solid-svg-icons";
 import FormInput from "./FormInput";
 import { initialProject } from "@/constants"; // Assuming you have initialProject
 
 interface ProjectsProps {
   data?: ProjectData[];
-  setData: any;
+  setData: (newValue: ProjectData[]) => void;
 }
 
 const Projects: React.FC<ProjectsProps> = ({ data = [], setData }) => {

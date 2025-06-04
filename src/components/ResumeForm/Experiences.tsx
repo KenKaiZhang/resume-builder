@@ -8,7 +8,7 @@ import { faBriefcase } from "@fortawesome/free-solid-svg-icons/faBriefcase";
 
 interface ExperienceProps {
   data?: ExperienceData[];
-  setData: any;
+  setData: (newValue: ExperienceData[]) => void;
 }
 
 const Experiences: React.FC<ExperienceProps> = ({ data = [], setData }) => {

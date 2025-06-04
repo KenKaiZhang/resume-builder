@@ -8,7 +8,7 @@ interface FormInputProps {
   label: string;
   value?: string;
   placeholder: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
 }
 
 const FormInput: React.FC<FormInputProps> = ({

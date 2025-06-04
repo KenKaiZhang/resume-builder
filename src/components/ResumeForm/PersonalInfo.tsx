@@ -5,7 +5,7 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 interface PersonalInfoProps {
   data: PersonalInfoData;
-  setData: any;
+  setData: (newValue: PersonalInfoData) => void;
 }
 
 const PersonalInfo: React.FC<PersonalInfoProps> = ({ data, setData }) => {

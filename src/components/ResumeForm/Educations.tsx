@@ -8,7 +8,7 @@ import { faGraduationCap } from "@fortawesome/free-solid-svg-icons/faGraduationC
 
 interface EducationProps {
   data?: EducationData[];
-  setData: any;
+  setData: (newValue: EducationData[]) => void;
 }
 
 const Educations: React.FC<EducationProps> = ({ data = [], setData }) => {
