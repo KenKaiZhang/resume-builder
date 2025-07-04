@@ -1,7 +1,7 @@
 import type { ProjectData } from "@/types";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faProjectDiagram, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
 import FormInput from "./FormInput";
 import { initialProject } from "@/constants"; // Assuming you have initialProject
 
@@ -39,10 +39,6 @@ const Projects: React.FC<ProjectsProps> = ({ data = [], setData }) => {
 
   return (
     <section className="flex flex-col gap-4">
-      <div className="flex gap-2 items-center">
-        <FontAwesomeIcon icon={faProjectDiagram} className="text-sm mt-0.5" />
-        <h1>Projects</h1>
-      </div>
       {data.map((entry, i) => (
         <div
           key={i}
@@ -78,7 +74,7 @@ const Projects: React.FC<ProjectsProps> = ({ data = [], setData }) => {
             <FormInput
               id="link"
               type="input"
-              label="Project Link (Optional)"
+              label="Project Link (comma separated) (Optional)"
               value={entry?.link}
               placeholder="https://github.com/my-project"
               onChange={(e) => handleChange(e, i)}
@@ -88,7 +84,7 @@ const Projects: React.FC<ProjectsProps> = ({ data = [], setData }) => {
             <FormInput
               id="description"
               type="textarea"
-              label="Description"
+              label="Description (double line separated)"
               value={entry?.description}
               placeholder="Briefly describe your project and its features."
               onChange={(e) => handleChange(e, i)}

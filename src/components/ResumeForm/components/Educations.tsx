@@ -1,35 +1,31 @@
-import type { ExperienceData } from "@/types";
-import { Button } from "../ui/button";
+import type { EducationData } from "@/types";
+import { Button } from "../../ui/button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
 import FormInput from "./FormInput";
-import { initialExperience } from "@/constants"; // Assuming you have initialExperience
-import { faBriefcase } from "@fortawesome/free-solid-svg-icons/faBriefcase";
+import { initialEducation } from "@/constants";
 
-interface ExperienceProps {
-  data?: ExperienceData[];
-  setData: (newValue: ExperienceData[]) => void;
+interface EducationProps {
+  data?: EducationData[];
+  setData: (newValue: EducationData[]) => void;
 }
 
-const Experiences: React.FC<ExperienceProps> = ({ data = [], setData }) => {
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-    i: number
-  ) => {
-    const key = e.target.id as keyof ExperienceData;
+const Educations: React.FC<EducationProps> = ({ data = [], setData }) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>, i: number) => {
+    const key = e.target.id as keyof EducationData;
     const value = e.target.value;
 
-    const targetExp: ExperienceData = { ...data[i] };
-    targetExp[key] = value;
+    const targetEdu: EducationData = { ...data[i] };
+    targetEdu[key] = value;
 
     const newData = [...data];
-    newData[i] = targetExp;
+    newData[i] = targetEdu;
 
     setData(newData);
   };
 
   const handleAdd = () => {
-    const newData = [...data, initialExperience];
+    const newData = [...data, initialEducation];
     setData(newData);
   };
 
@@ -40,17 +36,10 @@ const Experiences: React.FC<ExperienceProps> = ({ data = [], setData }) => {
 
   return (
     <section className="flex flex-col gap-4">
-      <div className="flex gap-2 items-center">
-        <FontAwesomeIcon icon={faBriefcase} className="text-sm mt-0.5" />
-        <h1>Experience</h1>
-      </div>
       {data.map((entry, i) => (
-        <div
-          key={i}
-          className="flex flex-col gap-4 border-1 px-4 pt-2 pb-4 rounded-lg"
-        >
+        <div key={i} className="flex flex-col gap-4 border-1 px-4 pt-2 pb-4 rounded-lg">
           <div className="flex justify-between">
-            <h3>{`Experience ${i + 1}`}</h3>
+            <h3>{`Education ${i + 1}`}</h3>
             <Button variant="ghost" onClick={() => handleRemove(i)}>
               <FontAwesomeIcon icon={faXmark} />
             </Button>
@@ -58,21 +47,21 @@ const Experiences: React.FC<ExperienceProps> = ({ data = [], setData }) => {
           <div className="flex gap-4">
             <div className="flex-1">
               <FormInput
-                id="company"
+                id="school"
                 type="input"
-                label="Company"
-                value={entry?.company}
-                placeholder="Company Name"
+                label="School"
+                value={entry?.school}
+                placeholder="University Name"
                 onChange={(e) => handleChange(e, i)}
               />
             </div>
             <div className="flex-1">
               <FormInput
-                id="title"
+                id="degree"
                 type="input"
-                label="Title"
-                value={entry?.title}
-                placeholder="Software Engineer"
+                label="Degree"
+                value={entry?.degree}
+                placeholder="B.S. Computer Science"
                 onChange={(e) => handleChange(e, i)}
               />
             </div>
@@ -84,28 +73,31 @@ const Experiences: React.FC<ExperienceProps> = ({ data = [], setData }) => {
                 type="input"
                 label="Location"
                 value={entry?.location}
-                placeholder="City, State or Remote"
+                placeholder="City, State"
                 onChange={(e) => handleChange(e, i)}
               />
             </div>
             <div className="flex-1">
+              <FormInput id="gpa" type="input" label="GPA" value={entry.gpa} placeholder="4.0" onChange={(e) => handleChange(e, i)} />
+            </div>
+            <div className="flex-2">
               <FormInput
                 id="years"
                 type="input"
                 label="Years"
                 value={entry.years}
-                placeholder="2022 - Present or 2020 - 2022"
+                placeholder="2021 - 2025 or Expected 2025"
                 onChange={(e) => handleChange(e, i)}
               />
             </div>
           </div>
           <div>
             <FormInput
-              id="description"
+              id="classes"
               type="textarea"
-              label="Description"
-              value={entry?.description}
-              placeholder="Responsibilities and achievements..."
+              label="Relevant Coursework (comma separated)"
+              value={entry?.classes}
+              placeholder="Machine Learning, Networking, etc."
               onChange={(e) => handleChange(e, i)}
             />
           </div>
@@ -113,10 +105,10 @@ const Experiences: React.FC<ExperienceProps> = ({ data = [], setData }) => {
       ))}
       <Button onClick={handleAdd}>
         <FontAwesomeIcon icon={faPlus} />
-        <p>Add New Experience</p>
+        <p>Add New Education</p>
       </Button>
     </section>
   );
 };
 
-export default Experiences;
+export default Educations;

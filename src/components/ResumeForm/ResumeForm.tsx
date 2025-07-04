@@ -1,9 +1,33 @@
-import type { EducationData, ExperienceData, PersonalInfoData, ProjectData, ResumeData } from "@/types";
-import PersonalInfo from "./PersonalInfo";
-import Education from "./Educations";
-import { useEffect } from "react";
-import Experience from "./Experiences";
-import Projects from "./Projects";
+import type {
+  CertificationData,
+  EducationData,
+  ExperienceData,
+  PersonalInfoData,
+  ProjectData,
+  ResumeData,
+  SkillData,
+} from "@/types";
+import PersonalInfo from "./components/PersonalInfo";
+import Education from "./components/Educations";
+import Experience from "./components/Experiences";
+import Projects from "./components/Projects";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "../ui/accordion";
+import { faGraduationCap } from "@fortawesome/free-solid-svg-icons/faGraduationCap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faBriefcase,
+  faCertificate,
+  faCogs,
+  faProjectDiagram,
+} from "@fortawesome/free-solid-svg-icons";
+import { Badge } from "../ui/badge";
+import Skills from "./components/Skills";
+import Certifications from "./components/CertificationsData";
 
 interface ResumeFormProps {
   resumeData: ResumeData;
@@ -14,44 +38,132 @@ const ResumeForm: React.FC<ResumeFormProps> = ({
   resumeData,
   setResumeData,
 }) => {
-
   const handleSetPersonalInfo = (newValue: PersonalInfoData) => {
     setResumeData((prev) => ({ ...prev, personalInfo: newValue }));
   };
 
   const handleSetEducations = (newValue: EducationData[]) => {
-    setResumeData((prev) => ({ ...prev, educations: newValue }))
-  }
-  
+    setResumeData((prev) => ({ ...prev, educations: newValue }));
+  };
+
   const handleSetExperiences = (newValue: ExperienceData[]) => {
-    setResumeData((prev) => ({ ...prev, experiences: newValue }))
-  }
+    setResumeData((prev) => ({ ...prev, experiences: newValue }));
+  };
 
   const handleSetProjects = (newValue: ProjectData[]) => {
-    setResumeData((prev) => ({ ...prev, projects: newValue }))
-  }
+    setResumeData((prev) => ({ ...prev, projects: newValue }));
+  };
 
+  const handleSetSkills = (newValue: SkillData[]) => {
+    setResumeData((prev) => ({ ...prev, skills: newValue }));
+  };
 
-  useEffect(() => console.log(resumeData), [resumeData])
+  const handleSetCertifications = (newValue: CertificationData[]) => {
+    setResumeData((prev) => ({ ...prev, certifications: newValue }));
+  };
 
   return (
-    <div className="pr-2 flex flex-1 flex-col gap-4 overflow-auto">
+    <div className="pr-2 h-full flex flex-col gap-4 overflow-auto">
       <PersonalInfo
         data={resumeData.personalInfo}
         setData={handleSetPersonalInfo}
       />
-      <Education
-        data={resumeData.educations}
-        setData={handleSetEducations}
-      />
-      <Experience 
-        data={resumeData.experiences}
-        setData={handleSetExperiences}
-      />
-      <Projects
-        data={resumeData.projects}
-        setData={handleSetProjects}
-      />
+      <Accordion type="multiple">
+        <AccordionItem value="educations">
+          <AccordionTrigger>
+            <div className="flex flex-1 gap-2 items-center">
+              <FontAwesomeIcon
+                icon={faGraduationCap}
+                className="text-sm mt-0.5"
+              />
+              <h1>Education</h1>
+              {resumeData.educations.length && (
+                <Badge className="ml-auto">
+                  {resumeData.educations.length}
+                </Badge>
+              )}
+            </div>
+          </AccordionTrigger>
+          <AccordionContent>
+            <Education
+              data={resumeData.educations}
+              setData={handleSetEducations}
+            />
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="experiences">
+          <AccordionTrigger>
+            <div className="flex flex-1 gap-2 items-center">
+              <FontAwesomeIcon icon={faBriefcase} className="text-sm mt-0.5" />
+              <h1>Experience</h1>
+              {resumeData.experiences.length && (
+                <Badge className="ml-auto">
+                  {resumeData.experiences.length}
+                </Badge>
+              )}
+            </div>
+          </AccordionTrigger>
+          <AccordionContent>
+            <Experience
+              data={resumeData.experiences}
+              setData={handleSetExperiences}
+            />
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="projects">
+          <AccordionTrigger>
+            <div className="flex flex-1 gap-2 items-center">
+              <FontAwesomeIcon
+                icon={faProjectDiagram}
+                className="text-sm mt-0.5"
+              />
+              <h1>Projects</h1>
+              {resumeData.projects.length && (
+                <Badge className="ml-auto">{resumeData.projects.length}</Badge>
+              )}
+            </div>
+          </AccordionTrigger>
+          <AccordionContent>
+            <Projects data={resumeData.projects} setData={handleSetProjects} />
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="skills">
+          <AccordionTrigger>
+            <div className="flex flex-1 gap-2 items-center">
+              <FontAwesomeIcon icon={faCogs} className="text-sm mt-0.5" />
+              <h1>Skills</h1>
+              {resumeData.skills.length && (
+                <Badge className="ml-auto">{resumeData.skills.length}</Badge>
+              )}
+            </div>
+          </AccordionTrigger>
+          <AccordionContent>
+            <Skills data={resumeData.skills} setData={handleSetSkills} />
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="certificates">
+          <AccordionTrigger>
+            <div className="flex flex-1 gap-2 items-center">
+              <FontAwesomeIcon
+                icon={faCertificate}
+                className="text-sm mt-0.5"
+              />
+              <h1>Certificates</h1>
+              {resumeData.certifications.length && (
+                <Badge className="ml-auto">
+                  {resumeData.certifications.length}
+                </Badge>
+              )}
+            </div>
+          </AccordionTrigger>
+          <AccordionContent>
+            <Certifications
+              data={resumeData.certifications}
+              setData={handleSetCertifications}
+            />
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
     </div>
   );
 };

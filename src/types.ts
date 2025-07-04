@@ -3,6 +3,8 @@ export interface ResumeData {
   educations: EducationData[]
   experiences: ExperienceData[]
   projects: ProjectData[]
+  skills: SkillData[]
+  certifications: CertificationData[]
 }
 
 export interface PersonalInfoData {
@@ -28,6 +30,7 @@ export interface ExperienceData {
   location: string;
   years: string;
   description: string;
+  tools: string;
 }
 
 export interface ProjectData {
@@ -35,4 +38,15 @@ export interface ProjectData {
   technologies: string;
   link?: string;
   description: string;
+}
+
+export interface SkillData {
+  category: string;
+  skills: string;
+}
+
+export interface CertificationData {
+  issuer: string;
+  title: string;
+  date: string;
 }

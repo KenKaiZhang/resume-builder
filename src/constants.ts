@@ -1,4 +1,4 @@
-import type { EducationData, ExperienceData, PersonalInfoData, ProjectData, ResumeData } from "./types";
+import type { CertificationData, EducationData, ExperienceData, PersonalInfoData, ProjectData, ResumeData, SkillData } from "./types";
 
 export const initialPersonalInfo: PersonalInfoData = {
   name: "",
@@ -22,6 +22,7 @@ export const initialExperience: ExperienceData = {
   title: "",
   location: "",
   years: "",
+  tools: "",
   description: "",
 }
 
@@ -31,9 +32,22 @@ export const initialProject: ProjectData = {
   description: "",
 }
 
+export const initialSkill: SkillData = {
+  category: "",
+  skills: ""
+}
+
+export const initialCertification: CertificationData = {
+  issuer: "",
+  title: "",
+  date: "",
+}
+
 export const initialResume: ResumeData = {
   personalInfo: initialPersonalInfo,
   educations: [],
   experiences: [],
-  projects: []
+  projects: [],
+  skills: [],
+  certifications: []
 }
