@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link id="favicon-light" rel="icon" type="image/svg+xml" href="/resume-builder/file-black.svg" media="(prefers-color-scheme: light)">
+    <link id="favicon-dark" rel="icon" type="image/svg+xml" href="/resume-builder/file-white.svg" media="(prefers-color-scheme: dark)">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resume Builder</title>
+    <script>
+      // Dynamically update favicon if theme changes
+      const setFavicon = () => {
+        const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.getElementById('favicon-light').disabled = isDark;
+        document.getElementById('favicon-dark').disabled = !isDark;
+      };
+      setFavicon();
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', setFavicon);
+    </script>
+    <script type="module" crossorigin src="/resume-builder/assets/index-B0zzGuyV.js"></script>
+    <link rel="stylesheet" crossorigin href="/resume-builder/assets/index-ZRDnG-Gg.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
