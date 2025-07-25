@@ -2,9 +2,20 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link id="favicon-light" rel="icon" type="image/svg+xml" href="/file-black.svg" media="(prefers-color-scheme: light)">
+    <link id="favicon-dark" rel="icon" type="image/svg+xml" href="/file-white.svg" media="(prefers-color-scheme: dark)">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
+    <title>Resume Builder</title>
+    <script>
+      // Dynamically update favicon if theme changes
+      const setFavicon = () => {
+        const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.getElementById('favicon-light').disabled = isDark;
+        document.getElementById('favicon-dark').disabled = !isDark;
+      };
+      setFavicon();
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', setFavicon);
+    </script>
   </head>
   <body>
     <div id="root"></div>

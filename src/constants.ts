@@ -1,3 +1,4 @@
+import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 import type { CertificationData, EducationData, ExperienceData, PersonalInfoData, ProjectData, ResumeData, SkillData } from "./types";
 
 export const initialPersonalInfo: PersonalInfoData = {
@@ -50,4 +51,9 @@ export const initialResume: ResumeData = {
   projects: [],
   skills: [],
   certifications: []
+}
+
+export const themeOptions = {
+  "light": { label: "Light", value: "light", icon: faSun },
+  "dark": { label: "Dark", value: "dark", icon: faMoon }
 }

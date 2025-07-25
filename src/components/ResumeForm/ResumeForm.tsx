@@ -7,16 +7,13 @@ import type {
   ResumeData,
   SkillData,
 } from "@/types";
-import PersonalInfo from "./components/PersonalInfo";
-import Education from "./components/Educations";
-import Experience from "./components/Experiences";
-import Projects from "./components/Projects";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "../ui/accordion";
+import { Badge } from "../ui/badge";
 import { faGraduationCap } from "@fortawesome/free-solid-svg-icons/faGraduationCap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -25,9 +22,14 @@ import {
   faCogs,
   faProjectDiagram,
 } from "@fortawesome/free-solid-svg-icons";
-import { Badge } from "../ui/badge";
-import Skills from "./components/Skills";
-import Certifications from "./components/CertificationsData";
+import { 
+  PersonalInfo,
+  Educations,
+  Experiences,
+  Projects,
+  Skills,
+  Certifications
+} from "./components"
 
 interface ResumeFormProps {
   resumeData: ResumeData;
@@ -85,7 +87,7 @@ const ResumeForm: React.FC<ResumeFormProps> = ({
             </div>
           </AccordionTrigger>
           <AccordionContent>
-            <Education
+            <Educations
               data={resumeData.educations}
               setData={handleSetEducations}
             />
@@ -104,7 +106,7 @@ const ResumeForm: React.FC<ResumeFormProps> = ({
             </div>
           </AccordionTrigger>
           <AccordionContent>
-            <Experience
+            <Experiences
               data={resumeData.experiences}
               setData={handleSetExperiences}
             />

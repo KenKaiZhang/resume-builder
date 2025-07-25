@@ -100,7 +100,7 @@ const Actions: React.FC<ActionProps> = ({ resumeData, setResumeData }) => {
         <FontAwesomeIcon icon={faFileDownload} />
         <p>Download Resume</p>
       </Button>
-      <Button className="flex-1 bg-red-600 hover:bg-red-700" onClick={handleReset}>
+      <Button className="flex-1 text-white bg-purple-600 hover:bg-purple-700" onClick={handleReset}>
         <FontAwesomeIcon icon={faRedoAlt} />
         <p>Reset</p>
       </Button>

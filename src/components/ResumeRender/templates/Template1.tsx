@@ -9,7 +9,7 @@ const Template1: React.FC<Template1Props> = ({ resumeData }) => {
   const { personalInfo, educations, experiences, projects, skills, certifications } = resumeData;
 
   return (
-    <div className="p-8 font-serif text-[12px] leading-relaxed">
+    <div className="p-8 font-serif text-[12px] leading-relaxed text-black">
       <div className="mb-4 flex flex-col justify-center items-center">
         <h1 className="text-[18px] font-bold">{personalInfo.name}</h1>
         <div>{[personalInfo.phone, personalInfo.email, personalInfo.address].filter(Boolean).join(" ♢ ")}</div>
@@ -18,7 +18,7 @@ const Template1: React.FC<Template1Props> = ({ resumeData }) => {
       {experiences.length > 0 && (
         <section>
           <h1 className="font-bold">EXPERIENCES</h1>
-          <div className="my-2 h-[1px] w-full bg-gray-300" />
+          <div className="my-2 h-0.25 w-full bg-gray-300" />
           {experiences.map((exp, i) => (
             <div key={i} className="w-full mb-4">
               <div className="flex justify-between">
@@ -27,7 +27,7 @@ const Template1: React.FC<Template1Props> = ({ resumeData }) => {
               </div>
               <div className="flex justify-between">
                 <p>{exp.title}</p>
-                <i>GPA: {exp.location}</i>
+                <i>{exp.location}</i>
               </div>
               <ul className="mt-1 ml-4 space-y-1">
                 {exp.description.split("\n\n").map((des, i) => (
@@ -50,7 +50,7 @@ const Template1: React.FC<Template1Props> = ({ resumeData }) => {
       {skills.length > 0 && (
         <section className="mb-4">
           <h1 className="font-bold">SKILLS</h1>
-          <div className="my-2 h-[1px] w-full bg-gray-300" />
+          <div className="my-2 h-0.25 w-full bg-gray-300" />
           {skills.map((skill, i) => (
             <div key={i} className="w-full flex gap-4">
               <b className="w-[80px]">{skill.category}</b>
@@ -62,7 +62,7 @@ const Template1: React.FC<Template1Props> = ({ resumeData }) => {
       {educations.length > 0 && (
         <section>
           <h1 className="font-bold">EDUCATION</h1>
-          <div className="my-2 h-[1px] w-full bg-gray-300" />
+          <div className="my-2 h-0.25 w-full bg-gray-300" />
           {educations.map((edu, i) => (
             <div key={i} className="w-full mb-4">
               <div className="flex justify-between">
@@ -71,7 +71,7 @@ const Template1: React.FC<Template1Props> = ({ resumeData }) => {
               </div>
               <div className="flex justify-between">
                 <i>{edu.degree}</i>
-                <p>GPA: {edu.gpa}</p>
+                {edu.gpa && <p>GPA: {edu.gpa}</p>}
               </div>
               <p>Relevant Courses: {edu.classes.split(",").join(", ")}</p>
             </div>
@@ -81,7 +81,7 @@ const Template1: React.FC<Template1Props> = ({ resumeData }) => {
       {projects.length > 0 && (
         <section>
           <h1 className="font-bold">PROJECTS</h1>
-          <div className="my-2 h-[1px] w-full bg-gray-300" />
+          <div className="my-2 h-0.25 w-full bg-gray-300" />
           {projects.map((proj, i) => (
             <div key={i} className="w-full mb-4">
               <div className="flex justify-between">
@@ -109,7 +109,7 @@ const Template1: React.FC<Template1Props> = ({ resumeData }) => {
       {certifications.length > 0 && (
         <section>
           <h1 className="font-bold">CERTIFICATIONS</h1>
-          <div className="my-2 h-[1px] w-full bg-gray-300" />
+          <div className="my-2 h-0.25 w-full bg-gray-300" />
           {certifications.map((cert, i) => (
             <div key={i} className="w-full flex justify-between mb-4">
               <p>
